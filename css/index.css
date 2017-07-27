@@ -9,3 +9,32 @@
 .side-nav {
 	width: 400px;
 }
+
+table {
+	text-align: center;
+}
+
+.centered {
+	display: flex;
+	align-items: flex-start;
+	margin: 0;
+	padding: 0 10px 0 10px;
+}
+
+.item-holder {
+	text-align: center;
+	font-size: 12px;
+	flex: 1;
+}
+
+.function-btn {
+	padding-left: 15px;
+	padding-right: 15px;
+	color: #fff;
+	background-color: darkslategrey;
+}
+
+.item-holder i, .item-holder span {
+	display: inline-block;
+	
+}
