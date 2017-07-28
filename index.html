@@ -14,9 +14,27 @@
     </head>
 
     <body>
+		<!--
+		<div class="navbar">
+			<nav>
+				<div class="nav-wrapper">
+					<a href="#" class="brand-logo center">Admin Panel</a>
+					<a href="#" data-activates="slide-out" class="waves-effect waves-light button-collapse"><i class="material-icons">menu</i></a>
+				</div>
+			</nav>
+		</div>
+		-->
+		
+		<div class="search-div">
+			<a href="#" data-activates="slide-out" class="waves-effect waves-light button-collapse tooltipped" data-position="bottom" data-delay="50" data-tooltip="Menu" id="hamburger-menu"><i class="material-icons">menu</i></a>
+			<input id="search-input" class="controls" type="text" placeholder="Search Google Maps">	
+		</div>
+		
+		<!--Side navigation bar. (Hidden)-->
 		<div class="row">
 			<div class="col s12 m4 l3">
-				<ul id="slide-out" class="side-nav fixed">
+				<ul id="slide-out" class="side-nav">
+					
 					<li>
 						<div class="user-view">
 							<div class="background">
@@ -28,24 +46,17 @@
 						</div>
 					</li>
 					<li>
-						<div class="centered">
-							<div class="item-holder">
-								<a href="#" class="btn function-btn"><i class="material-icons">add_box</i><span>Add</span></a>
-								<a href="#" class="btn function-btn"><i class="material-icons">edit</i><span>Edit</span></a>
-								<a href="#" class="btn function-btn"><i class="material-icons">delete</i><span>Delete</span></a>
-								<a href="#" class="btn function-btn"><i class="material-icons">share</i><span>Share</span></a>
-							</div>
+						<div class="collection">
+							<a href="#" class="waves-effect collection-item center-align">ADD</a>
+							<a href="#" class="waves-effect collection-item center-align">EDIT</a>
+							<a href="#" class="waves-effect collection-item center-align">DELETE</a>
+							<a href="#" class="waves-effect collection-item center-align">SHARE</a>
 						</div>
 					</li>
-					<div class="divider"></div>
-					<li><a href="#!">Second link</a></li>
-					<li><div class="divider"></div></li>
-					<li><a class="subheader">Subheader</a></li>
-					<li><a class="waves-effect" href="#!">Third link with waves</a></li>
+					
 					<li><a class="waves-effect" href="#"><span id="latitude"></span></a></li>
 					<li><a class="waves-effect" href="#"><span id="longitude"></span></a></li>
 				</ul>
-				<a href="#" data-activates="slide-out" class="btn button-collapse"><i class="material-icons">menu</i></a>
 			</div>
 			
 			<div class="col s12 m8 l9">
@@ -65,6 +76,6 @@
             });
         </script>
         <script type="text/javascript" src="js/get-location.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZWmnDLUL4qwWOGqY0yQF2bCoQUW0hlvU&callback=initMap"></script>        
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZWmnDLUL4qwWOGqY0yQF2bCoQUW0hlvU&libraries=places&callback=initMap"></script>        
     </body>
 </html>
