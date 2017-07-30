@@ -1,8 +1,8 @@
 function submitData() {
 
 	var json_data = {
-		latitude: document.getElementById("latitude").innerHTML,
-		longitude: document.getElementById("longitude").innerHTML
+		"latitude": document.getElementById("latitude").innerHTML,
+		"longitude": document.getElementById("longitude").innerHTML
 	}
 
 
@@ -14,15 +14,15 @@ function submitData() {
 		type: 'POST',
 		url: 'addToPHP.php',
 		data: json_data,
-		dataType: 'json',
+		dataType: 'text',
 	})
 	.done(function(data){
 		// show the response
-        $('#response').html(data);
+        $('#response').html("SUCCESS: " + data);
 		dataType: 'text'
     })
 	.fail(function(request, status, error) {
-		$('#response').html(request.responseText);
+		$('#response').html("Error: " + request.responseText);
 	});
 	return false;
 }

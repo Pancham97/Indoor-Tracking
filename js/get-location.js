@@ -22,7 +22,7 @@ var map, infoWindow;
 				position: google.maps.ControlPosition.RIGHT_BOTTOM
 			}
         });
-		
+
 		// Create the search box and link it to the UI element.
         var input = document.getElementById('search-input');
         var searchBox = new google.maps.places.SearchBox(input);
@@ -82,7 +82,7 @@ var map, infoWindow;
           });
           map.fitBounds(bounds);
         });
-        
+
         //This is a pop-up if location is found.
         infoWindow = new google.maps.InfoWindow;
 
@@ -94,16 +94,16 @@ var map, infoWindow;
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
-				
-				document.getElementById("latitude").innerHTML = "Latitude: " + pos.lat;
-				document.getElementById("longitude").innerHTML = "Longitude: " + pos.lng;
+
+				document.getElementById("latitude").innerHTML = pos.lat;
+				document.getElementById("longitude").innerHTML = pos.lng;
 
 				//This shows a pop-up when the location is found. Enable if required.
                 //infoWindow.setPosition(pos);
                 //infoWindow.setContent('Location found.');
                 //infoWindow.open(map);
                 map.setCenter(pos);
-                
+
                 var marker = new google.maps.Marker({
 					draggable: true,
                     position: pos,
@@ -111,15 +111,15 @@ var map, infoWindow;
                 });
 				map.setCenter(pos);
 				google.maps.event.addListener(marker, 'dragend', function(event) {
-					
+
 					//Get new coordinates after dragging the marker on the map.
 					console.log(event.latLng.lat());
 					console.log(event.latLng.lng());
-					
+
 					//Change the values in the HTML.
 					document.getElementById("latitude").innerHTML = event.latLng.lat();
 					document.getElementById("longitude").innerHTML = event.latLng.lng();
-					infoWindow.open(map, marker);
+					// infoWindow.open(map, marker);
 				});
             }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());

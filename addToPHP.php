@@ -47,17 +47,12 @@
 		}
 	} */
 
-	$data = $_POST["data"];
-	$rows = array();
+	$lat = $_POST;
 
-	while($r = mysql_fetch_assoc($data)) {
-		$rows[] = $r;
-	}
 	echo "<pre>";
 	// $lat = $_POST["latitude"];
 	// $long = $_POST["longitude"];
 	header("Content-type:application/json");
-	echo json_encode($rows);
-	print_r($_POST);
+	print_r(json_encode($lat));
 	echo "</pre>";
 ?>
