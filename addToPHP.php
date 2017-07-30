@@ -1,5 +1,5 @@
 <?php
-	/* $server = "localhost";
+	$server = "localhost";
 	$user = "root";
 	$password = "";
 	$DB_name = "indoor";
@@ -45,14 +45,29 @@
 		} else {
 			echo mysqli_error();
 		}
-	} */
+	}
 
-	$lat = $_POST;
+	// Get the data posted by the JavaScript file.
+	$data = $_POST;
 
-	echo "<pre>";
-	// $lat = $_POST["latitude"];
-	// $long = $_POST["longitude"];
-	header("Content-type:application/json");
-	print_r(json_encode($lat));
-	echo "</pre>";
+	$latitude = $_POST["latitude"];
+	$longitude = $_POST["longitude"];
+
+	$insert_query = "INSERT INTO data (`latitude`, `longitude`) VALUES ('$latitude', '$longitude')";
+	$execute_insert_query = mysqli_query($connection, $insert_query);
+
+	if($execute_insert_query) {
+		echo "<pre>";
+			print_r("Data added successfully!");
+			header("Content-type:application/json");
+			print_r(json_encode($data));
+		echo "</pre>";
+	} else {
+		echo "<pre>";
+			print_r("Error in adding data!");
+			header("Content-type:application/json");
+			print_r(json_encode($data));
+		echo "</pre>";
+	}
+
 ?>

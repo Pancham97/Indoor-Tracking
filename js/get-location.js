@@ -70,7 +70,7 @@ var map, infoWindow;
               icon: icon,
               title: place.name,
               position: place.geometry.location,
-				draggable: true
+			  draggable: true
             }));
 
             if (place.geometry.viewport) {
@@ -109,8 +109,23 @@ var map, infoWindow;
                     position: pos,
                     map: map
                 });
-				map.setCenter(pos);
+
+                // This code block is just for demo of 'click' event. Uncomment only if you are sure of what you are trying to do.
+                // google.maps.event.addListener(marker, 'click', function(event) {
+                //     map.setCenter(marker.getPosition());
+                //     placeMarkerAndPanTo(event.latLng, map);
+                //
+                //     //Get new coordinates after dragging the marker on the map.
+				// 	console.log(event.latLng.lat());
+				// 	console.log(event.latLng.lng());
+                //
+				// 	//Change the values in the HTML.
+				// 	document.getElementById("latitude").innerHTML = event.latLng.lat();
+				// 	document.getElementById("longitude").innerHTML = event.latLng.lng();
+                // });
+
 				google.maps.event.addListener(marker, 'dragend', function(event) {
+                    map.setCenter(marker.getPosition());
 
 					//Get new coordinates after dragging the marker on the map.
 					console.log(event.latLng.lat());
