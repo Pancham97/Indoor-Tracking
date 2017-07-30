@@ -69,7 +69,8 @@ var map, infoWindow;
               map: map,
               icon: icon,
               title: place.name,
-              position: place.geometry.location
+              position: place.geometry.location,
+				draggable: true
             }));
 
             if (place.geometry.viewport) {
@@ -104,9 +105,22 @@ var map, infoWindow;
                 map.setCenter(pos);
                 
                 var marker = new google.maps.Marker({
+					draggable: true,
                     position: pos,
                     map: map
                 });
+				map.setCenter(pos);
+				google.maps.event.addListener(marker, 'dragend', function(event) {
+					
+					//Get new coordinates after dragging the marker on the map.
+					console.log(event.latLng.lat());
+					console.log(event.latLng.lng());
+					
+					//Change the values in the HTML.
+					document.getElementById("latitude").innerHTML = event.latLng.lat();
+					document.getElementById("longitude").innerHTML = event.latLng.lng();
+					infoWindow.open(map, marker);
+				});
             }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());
             });
@@ -116,6 +130,9 @@ var map, infoWindow;
 			console.log("Browser does not support location services!");
         }
     }
+
+    //new google.maps.event.addDomListener(window, "load", initMap());
+
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 	infoWindow.setPosition(pos);

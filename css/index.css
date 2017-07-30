@@ -11,6 +11,7 @@ nav {
 	position: absolute;
 	top: 20px;
 	left: 20px;
+	border-radius: 3px;
 }
 
 #search-input {
