@@ -28,7 +28,7 @@
 	// 	echo mysql_error();
 	// }
 
-	// Uncomment this to check if the table already exists.
+	// This block is to check if the table already exists.
 	$test_query = "SELECT id FROM data";
 	$test_result = mysqli_query($connection, $test_query);
 
@@ -39,12 +39,14 @@
 			latitude DOUBLE NOT NULL,
 			longitude DOUBLE NOT NULL)";
 
-		$result = mysqli_query($connection, $table);
-		if(mysqli_query($connection, $table)) {
-			echo "Table created!";
-		} else {
-			echo mysqli_error();
-		}
+		mysqli_query($connection, $table);
+
+		// Uncomment this if you want to check whether the table is created.
+		// if(mysqli_query($connection, $table)) {
+		// 	echo "Table created!";
+		// } else {
+		// 	echo mysqli_error();
+		// }
 	}
 
 	// Get the data posted by the JavaScript file.
@@ -58,13 +60,13 @@
 
 	if($execute_insert_query) {
 		echo "<pre>";
-			print_r("Data added successfully!");
+			print_r("Data added successfully!\n");
 			header("Content-type:application/json");
 			print_r(json_encode($data));
 		echo "</pre>";
 	} else {
 		echo "<pre>";
-			print_r("Error in adding data!");
+			print_r("Error in adding data!\n");
 			header("Content-type:application/json");
 			print_r(json_encode($data));
 		echo "</pre>";

@@ -18,11 +18,11 @@ function submitData() {
 	})
 	.done(function(data){
 		// show the response
-        $('#response').html("SUCCESS: " + data);
+        $('#response').html(data);
 		dataType: 'text'
     })
 	.fail(function(request, status, error) {
-		$('#response').html("Error: " + request.responseText);
+		$('#response').html(request.responseText);
 	});
 	return false;
 }
