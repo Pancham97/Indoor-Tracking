@@ -1,4 +1,5 @@
 var map, infoWindow;
+var imageLocation;
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 22.5, lng: 74.2},
@@ -135,6 +136,7 @@ var map, infoWindow;
 					document.getElementById("latitude").innerHTML = event.latLng.lat();
 					document.getElementById("longitude").innerHTML = event.latLng.lng();
 					// infoWindow.open(map, marker);
+
 				});
             }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());

@@ -1,3 +1,10 @@
+#imageLocation {
+	position: absolute;
+	top: 25%;
+	left: 40%;
+	z-index: 9;
+}
+
 nav {
 	z-index: 10;
 	background-color: cornflowerblue;
@@ -80,5 +87,5 @@ table {
 
 .item-holder i, .item-holder span {
 	display: inline-block;
-	
+
 }*/
