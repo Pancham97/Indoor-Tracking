@@ -172,22 +172,22 @@
 										<li class="tab col s3"><a href="#floor-tab4">WiFi Maps</a></li>
 									</ul>
 								</div>
-
+                                <form id="form1" runat="server" method="post">
 								<div id="floor-tab1" class="col s12">
 									<div class="row">
 										<h6>Floor number</h6>
 										<div class="row">
 											<div id="input-field" class="col s12">
-												<input placeholder="Write the floor number" id="floor-number" type="text">
+												<input placeholder="Write the floor number" id="floor-number" type="text" name="floor_no">
 											</div>
 										</div>
 									</div>
 
 									<div class="row">
-										<h6>Floor number</h6>
+										<h6>Floor name</h6>
 										<div class="row">
 											<div id="input-field" class="col s12">
-												<input placeholder="Write the floor number" id="floor-number" type="text">
+												<input placeholder="Write the floor name" id="floor-name" type="text" name="floor_name">
 											</div>
 										</div>
 									</div>
@@ -206,28 +206,29 @@
                                         <!-- </form> -->
 
 
-                                        <form id="form1" runat="server">
-                                            <input type='file' id="imgInp" onchange="readURL(this);" />
-                                        </form>
+
+                                        <input type='file' id="imgInp" onchange="readURL(this);" name="image" />
+                                        <a href="#" class="btn waves-effect" onclick="submitMap()">Submit</a>
+                                    </div>
+                                </form>
                                         <script>
+
                                             function readURL(input) {
                                                 if (input.files && input.files[0]) {
                                                     var reader = new FileReader();
 
-                                                    reader.onload = function (e) {
-                                                        $('#imageLocation').attr('src', e.target.result);
-                                                    }
+                                                    // reader.onload = function (e) {
+                                                    //     $('#imageLocation').attr('src', e.target.result);
+                                                    // }
 
                                                     reader.readAsDataURL(input.files[0]);
                                                 }
                                             }
 
-                                            $("#imgInp").change(function(){
+                                            $('#imgInp').change(function(){
                                                 readURL(this);
                                             });
                                         </script>
-
-									</div>
 
 									<div class="divider"></div>
 
@@ -318,5 +319,6 @@
 
         <script async defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBZWmnDLUL4qwWOGqY0yQF2bCoQUW0hlvU&libraries=places&callback=initMap"></script>
 		<script src="js/submitToPHP.js" type="text/javascript"></script>
+        <script src="js/submitMap.js" type="text/javascript"></script>
     </body>
 </html>
