@@ -1,7 +1,8 @@
-
 package com.example.panchamkhaitan.wifi;
+import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,6 +16,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     //StringBuffer buffer = new StringBuffer();
     Context context;
     Button mapsButton;
+    @SuppressLint("WifiManagerLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,39 +57,60 @@ public class MainActivity extends AppCompatActivity {
                 if (isChecked && !wifiManager.isWifiEnabled()){
                     wifiManager.setWifiEnabled(true);
                 }
-                else if (!isChecked && wifiManager.isWifiEnabled()){
+                else {
                     wifiManager.setWifiEnabled(false);
                 }
             }
         });
+
         MyBroadCastReceiver myBroadCastReceiver = new MyBroadCastReceiver();
-        registerReceiver(myBroadCastReceiver,new IntentFilter(wifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
+        registerReceiver(myBroadCastReceiver, new IntentFilter(wifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
     }
 
-    public void callme(StringBuffer buffer) {
-        Toast toast = Toast.makeText(context, "start " + buffer.toString(), Toast.LENGTH_SHORT);
+    public void callme(ArrayList arrayList) {
+        Toast toast = Toast.makeText(context, "We found something!", Toast.LENGTH_SHORT);
         toast.show();
-        String[] val = buffer.toString().split("\n");
-        ArrayAdapter<String> ar = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, val);
-        listView.setAdapter(ar);
 
-        Toast toast1 = Toast.makeText(context, "finished", Toast.LENGTH_SHORT);
+//        String[] val = arrayList.toString().split("\n");
+
+        final WiFiAdapter wiFiAdapter = new WiFiAdapter(this, arrayList);
+//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, val);
+        listView.setAdapter(wiFiAdapter);
+
+        Toast toast1 = Toast.makeText(context, "Done bro!", Toast.LENGTH_SHORT);
         toast1.show();
     }
-    class MyBroadCastReceiver extends BroadcastReceiver{
 
+    class MyBroadCastReceiver extends BroadcastReceiver{
         @Override
         public void onReceive(Context context, Intent intent) {
-            StringBuffer stringBuffer = new StringBuffer();
+//            StringBuffer stringBuffer = new StringBuffer();
 
+            ArrayList<WiFi> wifiList = new ArrayList<>();
+
+            Comparator<ScanResult> comparator = new Comparator<ScanResult>() {
+                @Override
+                public int compare(ScanResult lhs, ScanResult rhs) {
+                    return (lhs.level > rhs.level ? -1 : (lhs.level == rhs.level ? 0 : 1));
+                }
+            };
             List<ScanResult> list = wifiManager.getScanResults();
+            Collections.sort(list, comparator);
             for (ScanResult scanResult : list){
-                stringBuffer.append(scanResult.SSID+ ": "+scanResult.level+" "+scanResult.BSSID+"\n");
+//                stringBuffer.append(scanResult.SSID+ ": "+scanResult.level+" "+scanResult.BSSID+"\n");
 
+                String wifiName = scanResult.SSID;
+                int wifiStrength = scanResult.level;
+                String wifiMAC = scanResult.BSSID;
+
+//                Log.v("Wifi name: ", wifiName);
+//                Log.v("Wifi MAC: ", wifiMAC);
+                WiFi wifi = new WiFi(wifiName, wifiStrength, wifiMAC);
+                wifiList.add(wifi);
             }
-            //textView.setText(stringBuffer);
-            //buffer = stringBuffer;
-            callme(stringBuffer);
+
+            callme(wifiList);
+            Log.v("Wifi li:", wifiList.toString());
         }
     }
 }
