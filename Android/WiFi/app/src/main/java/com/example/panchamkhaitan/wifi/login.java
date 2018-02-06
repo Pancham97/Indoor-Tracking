@@ -26,6 +26,7 @@ public class login extends AppCompatActivity {
                 if(username.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
                     Intent intent = new Intent(login.this, MainActivity.class);
                     startActivity(intent);
+
                 } else {
                     Toast.makeText(getApplicationContext(), "Incorrect ID or password!", Toast.LENGTH_SHORT).show();
                 }

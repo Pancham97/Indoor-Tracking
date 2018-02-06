@@ -32,8 +32,17 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"
             android:text="10:MA:0S:08:LK:3E"/>
+
+        <TextView
+            android:id="@+id/distanceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#aaa"
+            android:textSize="15sp"
+            android:text="23 m"/>
 
     </LinearLayout>
 

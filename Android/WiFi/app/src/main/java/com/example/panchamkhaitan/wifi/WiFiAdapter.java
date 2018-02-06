@@ -45,6 +45,10 @@ public class WiFiAdapter extends ArrayAdapter<WiFi> {
         String wifiMAC = currentWifi.getmWifiMAC();
         wifiMACView.setText(wifiMAC);
 
+        TextView distanceView = (TextView) listItemView.findViewById(R.id.distanceTextView);
+        String distance = currentWifi.getmDistance() + " m";
+        distanceView.setText(distance);
+
         return listItemView;
     }
 }

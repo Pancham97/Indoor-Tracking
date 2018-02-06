@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+<!--        <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet"> -->
+        <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <style type="text/css">
             html, body, #map-canvas {
                 height: 100%;
@@ -19,10 +22,14 @@
                 z-index: 1;
             }
         </style>
+        
     </head>
 
     <body>
         <div id="map-canvas"></div>
+    
+        <img id="floor-map-img" src="https://iffkkq-sn3302.files.1drv.com/y4muT9tLY479qCbwCFb2kPTyoUDzLwMzAPkUu89ZV5F0XgdsljFRtWNyfTHCyF2i_W-xCnOIIvqTit5c4EL9cgdo1zIF_rxeROPtFIfidi5il6sNXlG5YtBwczpvm44OsrTpf-y4_lGM6fEk4JxFiycxXt7Znzl-uspLO7E7t1GDVX9CC5hqN7ubftaZYUJHuN1BgrxrVkU67-a81cFL5EYhQ?width=636&height=590&cropmode=none">
+<!--
 
         <div id="upload-form">
             <form>
@@ -31,6 +38,7 @@
 
             </form>
         </div>
+-->
 
         <!-- <script>
             function previewFile(){
@@ -56,6 +64,12 @@
             
         </script> -->
 
+        <script>
+          $( function() {
+              $('#floor-map-img').resizable();
+          } );
+      </script>
+        
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBZWmnDLUL4qwWOGqY0yQF2bCoQUW0hlvU&amp"></script>
         <script src="js/1demo.js" type="text/javascript"></script>
     </body>

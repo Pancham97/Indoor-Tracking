@@ -9,20 +9,21 @@
         android:id="@+id/myswitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wi-Fi Settings: "
-        android:textOn="On"
-        android:textOff="Off"
-        android:showText="true"
+        android:layout_alignBottom="@+id/position_button"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="20dp"
         android:paddingTop="10dp"
-        android:paddingLeft="20dp"/>
-
-
+        android:layout_marginLeft="20dp"
+        android:showText="true"
+        android:text="Wi-Fi:"
+        android:textOff="Off"
+        android:textOn="On" />
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="70dp"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -31,4 +32,14 @@
         android:id="@+id/map_button"
         android:layout_alignParentTop="true"
         android:layout_alignEnd="@+id/listView" />
+
+    <Button
+        android:id="@+id/position_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="15dp"
+        android:layout_toStartOf="@+id/map_button"
+        android:text="Coordinates" />
+
 </RelativeLayout>

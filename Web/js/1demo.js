@@ -8,12 +8,20 @@ function initialize() {
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
 
-    new DraggableOverlay(map,
-    map.getCenter(),
-        '<div class="overlay"><img src="https://iffkkq-sn3302.files.1drv.com/y4muT9tLY479qCbwCFb2kPTyoUDzLwMzAPkUu89ZV5F0XgdsljFRtWNyfTHCyF2i_W-xCnOIIvqTit5c4EL9cgdo1zIF_rxeROPtFIfidi5il6sNXlG5YtBwczpvm44OsrTpf-y4_lGM6fEk4JxFiycxXt7Znzl-uspLO7E7t1GDVX9CC5hqN7ubftaZYUJHuN1BgrxrVkU67-a81cFL5EYhQ?width=636&height=590&cropmode=none"></div>');
+    new DraggableOverlay (
+        map,
+        map.getCenter(),
+        getFloorMap()
+    );
 
 
 }
+
+function getFloorMap() {
+    var floorMap = document.getElementById("floor-map-img").outerHTML;
+    return floorMap;
+}
+
 function previewFile(){
                 var preview = document.querySelector('img'); //selects the query named img
                 var file    = document.querySelector('input[type=file]').files[0]; //sames as here

@@ -1,0 +1,22 @@
+{
+  "databases": {
+    "db": {
+      "bucket": "wifi",
+      "sync":`
+          function :doc{
+          channel (doc.channels);
+      }`,
+      "users": {
+        "GUEST": {
+          "disabled": false,
+          "admin_channels": ["*"]
+        }
+      }
+      "username": "admin",
+      "password": "adminadmin",
+      "server": "http://localhost:8091/wifi",
+      "enable_shared_bucket_access": true,
+      "import_docs": "continuous"
+    }
+  }
+}
